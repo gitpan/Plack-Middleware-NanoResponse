@@ -5,7 +5,7 @@ use warnings;
 use parent qw/Plack::Middleware/;
 use Plack::Util::Accessor qw/path status head body/;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 sub call {
     my ($self, $env) = @_;
@@ -59,9 +59,10 @@ Plack::Middleware::NanoResponse - response a canned response
     };
     builder {
         enable 'NanoResponse',
-            path => '/foo',
-            head => { 'Content-Type' => 'text/html' },
-            body => 'OK';
+            path   => '/foo',
+            status => 200,
+            head   => { 'Content-Type' => 'text/html' },
+            body   => 'OK';
         $app;
     };
 

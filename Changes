@@ -1,5 +1,8 @@
 Revision history for Perl extension Plack::Middleware::NanoResponse
 
+0.03    Mon Oct 25 07:00:00 2010
+        - fixed pod: SYNOPSIS
+
 0.02    Mon Oct 25 03:33:33 2010
         - changes sample path -> /foo
         - fixed pod
