@@ -1,0 +1,26 @@
+---
+abstract: 'response a canned response'
+author:
+  - 'Dai Okabayashi <bayashi@cpan.org>'
+build_requires:
+  HTTP::Request::Common: 0
+  Plack::Test: 0
+  Test::More: 0.88
+configure_requires:
+  Module::Build: 0.36
+generated_by: 'Module::Build version 0.3607'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Plack-Middleware-NanoResponse
+provides:
+  Plack::Middleware::NanoResponse:
+    file: lib/Plack/Middleware/NanoResponse.pm
+    version: 0.01
+requires:
+  Plack::Middleware: 0
+  parent: 0
+resources:
+  license: http://dev.perl.org/licenses/
+version: 0.01
