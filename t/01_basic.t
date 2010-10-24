@@ -10,7 +10,7 @@ my $res = sub { [ 201, ['Content-Type' => 'text/plain'], ['default'] ] };
 {
     my $app = builder {
         enable 'NanoResponse',
-            path   => '/chk',
+            path   => '/foo',
             status => 200,
             head   => { 'Content-Type' => 'text/html' },
             body   => 'OK';
@@ -27,7 +27,7 @@ my $res = sub { [ 201, ['Content-Type' => 'text/plain'], ['default'] ] };
 
     my $cli2 = sub {
             my $cb = shift;
-            my $res = $cb->(GET '/chk'); # match, response is $app
+            my $res = $cb->(GET '/foo'); # match, response is $app
             is $res->code, 200;
             is $res->content_type, 'text/html';
             is $res->content_length, 2;
@@ -56,12 +56,12 @@ my $res = sub { [ 201, ['Content-Type' => 'text/plain'], ['default'] ] };
     # path only
     my $app = builder {
         enable 'NanoResponse',
-            path => '/chk';
+            path => '/foo';
         $res;
     };
     my $cli = sub {
             my $cb = shift;
-            my $res = $cb->(GET '/chk');
+            my $res = $cb->(GET '/foo');
             is $res->code, 200;
             is $res->content_type, 'text/plain';
             is $res->content, '';
@@ -71,7 +71,7 @@ my $res = sub { [ 201, ['Content-Type' => 'text/plain'], ['default'] ] };
     # path is code ref
     my $app2 = builder {
         enable 'NanoResponse',
-            path => sub { $_[0] eq '/chk' };
+            path => sub { $_[0] eq '/foo' };
         $res;
     };
     test_psgi $app2, $cli;
@@ -81,7 +81,7 @@ my $res = sub { [ 201, ['Content-Type' => 'text/plain'], ['default'] ] };
     # 500 Internal Server Error
     my $app = builder {
         enable 'NanoResponse',
-            path   => '/chk',
+            path   => '/foo',
             status => 500,
             head   => { 'Content-Type' => 'text/plain' },
             body   => 'Internal Server Error';
@@ -89,7 +89,7 @@ my $res = sub { [ 201, ['Content-Type' => 'text/plain'], ['default'] ] };
     };
     my $cli = sub {
             my $cb = shift;
-            my $res = $cb->(GET '/chk');
+            my $res = $cb->(GET '/foo');
             is $res->code, 500;
             is $res->content_type, 'text/plain';
             is $res->content, 'Internal Server Error';

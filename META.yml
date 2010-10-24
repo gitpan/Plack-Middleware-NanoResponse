@@ -17,10 +17,10 @@ name: Plack-Middleware-NanoResponse
 provides:
   Plack::Middleware::NanoResponse:
     file: lib/Plack/Middleware/NanoResponse.pm
-    version: 0.01
+    version: 0.02
 requires:
   Plack::Middleware: 0
   parent: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.01
+version: 0.02

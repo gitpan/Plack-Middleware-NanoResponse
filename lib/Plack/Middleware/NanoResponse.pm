@@ -5,7 +5,7 @@ use warnings;
 use parent qw/Plack::Middleware/;
 use Plack::Util::Accessor qw/path status head body/;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub call {
     my ($self, $env) = @_;
@@ -59,7 +59,7 @@ Plack::Middleware::NanoResponse - response a canned response
     };
     builder {
         enable 'NanoResponse',
-            path => '/chk',
+            path => '/foo',
             head => { 'Content-Type' => 'text/html' },
             body => 'OK';
         $app;
@@ -73,7 +73,7 @@ Plack::Middleware::NanoResponse is a Plack middleware component that responses a
 
 =head1 Repository
 
-<MODULE NAME> is hosted on github
+Plack::Middleware::NanoResponse is hosted on github
 at http://github.com/bayashi/Plack-Middleware-NanoResponse
 
 
